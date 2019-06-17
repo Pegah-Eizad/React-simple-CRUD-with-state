@@ -57,7 +57,7 @@ class App extends Component {
 		this.setState(() => {
 			return {
 				editing: false,
-				users: this.state.users.map(user => (user.id === id ? updatedUser : user))
+				users: this.state.users.map(user => (user = user.id === id ? {...updatedUser} : {...user}))
 			}
 		});
 	}
