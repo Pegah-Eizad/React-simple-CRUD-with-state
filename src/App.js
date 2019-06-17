@@ -54,12 +54,19 @@ class App extends Component {
 		// setEditing(false)
 
 		// setUsers(users.map(user => (user.id === id ? updatedUser : user)))
-		this.setState(() => {
+		this.setState((prevState) => {
 			return {
-				editing: false,
-				users: this.state.users.map(user => (user = user.id === id ? {...updatedUser} : {...user}))
+			   ...prevState, 
+			   editing: false,  
+			   users: prevState.users.map(user => {
+				   if (user.id === id) {
+                     return {...updatedUser}
+				   } else {
+					   return {...user}
+				   }
+			   })
 			}
-		});
+		});	
 	}
 
 	editRow = user => {
@@ -75,6 +82,7 @@ class App extends Component {
 	}
 	
 	render() {
+		console.log(this.state)
 		return (
 			<div className="container">
 				<h1>CRUD App with Hooks</h1>
