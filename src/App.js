@@ -106,7 +106,7 @@ class App extends Component {
 					</div>
 					<div className="flex-large">
 						<h2>View users</h2>
-						<UserTable users={this.usersData} editRow={this.editRow} deleteUser={this.deleteUser} />
+						<UserTable users={this.state.users} editRow={this.editRow} deleteUser={this.deleteUser} />
 					</div>
 				</div>
 			</div>
