@@ -82,7 +82,6 @@ class App extends Component {
 	}
 	
 	render() {
-		console.log(this.state)
 		return (
 			<div className="container">
 				<h1>CRUD App with Hooks</h1>

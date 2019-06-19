@@ -21,24 +21,20 @@ class EditUserForm extends Component {
   // You can tell React to skip applying an effect if certain values haven’t changed between re-renders. [ props ]
 
   handleInputChange = event => {
-    console.log('inside handlInputChange');
     const {name, value} = event.target;
     this.setState(() => {
-      console.log('state:: ', this.state);
 			return {
 			  user: {...this.state.user, [name]: value}
 			}
-		  });
+		});
   }
 
   handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.user.name + ' ' + this.state.user.username);
     event.preventDefault();
     this.props.updateUser(this.state.user.id, this.state.user);
   }
 
   render() {
-    console.log('state:: ', this.state);
     return (
       <form onSubmit={this.handleSubmit}>
         <label>Name</label>
