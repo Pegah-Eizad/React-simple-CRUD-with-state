@@ -29,23 +29,26 @@ class App extends Component {
 
 	// CRUD operations
 	addUser = user => {
-		user.id = this.state.users.length + 1
+		// user.id = this.state.users[length-1].id + 1;
+		console.log(user.id);
+		console.log('user:: ', user);
 		// setUsers([ ...users, user ])
-		this.setState(() => {
+		user = {...user, id: (this.state.users.length+1)};
+		this.setState((prevState) => {
 			return {
-			  users: [...this.usersData, user]
+			  users: [...prevState.users, user]
 			}
-		  });
+		});
 	}
 
 	deleteUser = id => {
 		// setEditing(false)
 
 		// setUsers(users.filter(user => user.id !== id))
-        this.setState(() => {
+        this.setState((prevState) => {
 			return {
 				editing: false,
-				users: this.state.users.filter(user => user.id !== id)
+				users: prevState.users.filter(user => user.id !== id).map((user, index) => user.id = index)
 			}
 		});
 	}
@@ -82,6 +85,7 @@ class App extends Component {
 	}
 	
 	render() {
+		console.log(':: ', this.state);
 		return (
 			<div className="container">
 				<h1>CRUD App with Hooks</h1>
