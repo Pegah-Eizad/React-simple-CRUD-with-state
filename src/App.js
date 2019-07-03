@@ -29,10 +29,6 @@ class App extends Component {
 
 	// CRUD operations
 	addUser = user => {
-		// user.id = this.state.users[length-1].id + 1;
-		console.log(user.id);
-		console.log('user:: ', user);
-		// setUsers([ ...users, user ])
 		user = {...user, id: (this.state.users.length+1)};
 		this.setState((prevState) => {
 			return {
@@ -42,13 +38,10 @@ class App extends Component {
 	}
 
 	deleteUser = id => {
-		// setEditing(false)
-
-		// setUsers(users.filter(user => user.id !== id))
         this.setState((prevState) => {
 			return {
 				editing: false,
-				users: prevState.users.filter(user => user.id !== id).map((user, index) => user.id = index)
+				users: prevState.users.filter(user => user.id !== id).map((user, index) => {return {...user, id: index}})
 			}
 		});
 	}
